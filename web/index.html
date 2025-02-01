@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>globalThis.__start = performance.now()</script>
+
+  <script type="module">
+    import { loadBundle } from "./loader.js";
+
+    /* Use the custom bundle format, and stream modules execution */
+    await loadBundle(import.meta.resolve("./bundle.jsb"), { streamingExecution: true });
+
+    /* Use the custom bundle format, but only execute once everything is loaded */
+    //await loadBundle(import.meta.resolve("./bundle.jsb"), { streamingExecution: false });
+
+    /* Use the unbundled modules */
+    //await import("../src/main.js")
+
+    /* Use esbuild's "traditional" bundle */
+    //await import("./bundle.esbuild.js");
+
+    console.info(`In total it took ${performance.now() - __start}ms`);
+  </script>
+  <script type="module"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "tasks": {
+    "server": "deno run -A ./slow-server.ts",
+    "bundle": "deno task bundle:streaming && deno task bundle:esbuild",
+    "bundle:streaming": "deno run -A ./bundler.ts ./src/main.js > web/bundle.jsb",
+    "bundle:esbuild": "deno run -A npm:esbuild --bundle ./src/main.js --format=esm --outfile=web/bundle.esbuild.js"
+  },
+  "compilerOptions": {
+    "lib": [
+      "deno.window",
+      "dom",
+      "esnext"
+    ]
+  },
+  "imports": {
+    "@babel/parser": "npm:@babel/parser@^8.0.0-alpha.15",
+    "@std/path": "jsr:@std/path@^1.0.8",
+    "esbuild": "npm:esbuild@^0.24.2"
+  }
+}
