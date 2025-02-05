@@ -20,7 +20,7 @@ Some of the JS files contain top-level awaits that just sleep for 1 second. This
 
 ## Bundle format
 
-The bundler for this format is deined in `./bundler.ts`. It sorts the modules in the graph in the order that they are meant to be executed. Each module is represented as:
+The bundler for this format is defined in `./bundler.ts`. It sorts the modules in the graph in the order that they are meant to be executed. Each module is represented as:
 - a `uint32` containing the length of the module specifier, in bytes
 - the module specifier, encoded as UTF-8
 - a `uint32` containing the length of the module source, in bytes
